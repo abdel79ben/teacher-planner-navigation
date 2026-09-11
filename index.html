@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Teacher Planner Navigation</title>
+<title>Teacher Planner Section Navigation</title>
 
 <style>
 * {
@@ -13,468 +13,456 @@
 
 body {
     margin: 0;
-    padding: 20px;
-    background: #ffffff;
-    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #111827;
+    padding: 8px 0;
+    background: transparent;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
+    color: #26332F;
 }
 
-.nav-container {
+/* =========================
+   NAVIGATION CONTAINER
+========================= */
+
+.section-nav {
     width: 100%;
-    max-width: 320px;
+    max-width: 1200px;
     margin: 0 auto;
-}
 
-/* Section */
-.section {
-    margin-bottom: 24px;
-}
-
-.section-title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 6px;
-    margin-bottom: 8px;
+    gap: 4px;
 
-    font-size: 15px;
+    padding: 7px;
+
+    background: #FCFBF8;
+    border: 1px solid #DCE8E1;
+    border-radius: 14px;
+
+    overflow-x: auto;
+    white-space: nowrap;
+
+    scrollbar-width: none;
+}
+
+.section-nav::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================
+   SECTION LABEL
+========================= */
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0 10px;
+    margin-right: 2px;
+
+    color: #4F6F64;
+
+    font-size: 11px;
     font-weight: 600;
-    color: #111827;
-}
 
-.section-title svg {
-    width: 19px;
-    height: 19px;
-    stroke: #111827;
-    stroke-width: 2;
-}
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 
-/* Navigation links */
-.nav-link {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-
-    padding: 9px 10px;
-    margin: 2px 0;
-
-    border-radius: 8px;
-
-    color: #374151;
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 500;
-
-    transition: all 0.18s ease;
-}
-
-.nav-link svg {
-    width: 19px;
-    height: 19px;
     flex-shrink: 0;
-
-    stroke: #4b5563;
-    stroke-width: 2;
 }
 
-.nav-link:hover {
-    background: #f3f4f6;
-    color: #111827;
-}
+/* =========================
+   NAVIGATION LINKS
+========================= */
 
-.nav-link:hover svg {
-    stroke: #111827;
-}
-
-/* Quick Actions */
-.quick-actions {
-    margin-top: 8px;
-    padding: 14px;
-
-    background: #eef8f2;
-    border-radius: 12px;
-}
-
-.quick-title {
-    display: flex;
+.nav-link {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
 
-    margin-bottom: 10px;
+    min-height: 38px;
 
-    font-size: 15px;
-    font-weight: 600;
-    color: #1f8f5f;
-}
+    padding: 8px 13px;
 
-.quick-title svg {
-    width: 20px;
-    height: 20px;
-    stroke: #1f8f5f;
-}
-
-.quick-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 8px 9px;
-    margin: 2px 0;
-
-    color: #374151;
+    color: #64746E;
     text-decoration: none;
+
+    border-radius: 10px;
 
     font-size: 13px;
     font-weight: 500;
 
-    border-radius: 7px;
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+
+    flex-shrink: 0;
 }
 
-.quick-link svg {
+.nav-link:hover {
+    background: #EAF2EE;
+    color: #4F6F64;
+}
+
+/* ACTIVE PAGE */
+
+.nav-link.active {
+    background: #EAF2EE;
+    color: #4F6F64;
+    font-weight: 600;
+}
+
+/* =========================
+   ICONS
+========================= */
+
+.nav-link svg {
     width: 18px;
     height: 18px;
-    stroke: #1f8f5f;
+
+    flex: 0 0 auto;
+
+    stroke: currentColor;
+    stroke-width: 1.9;
+
+    fill: none;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.quick-link:hover {
-    background: rgba(31,143,95,0.08);
-}
+/* =========================
+   DIVIDERS
+========================= */
 
-/* Divider */
 .divider {
-    height: 1px;
-    background: #e5e7eb;
-    margin: 12px 0 16px;
+    width: 1px;
+    height: 22px;
+
+    background: #DCE8E1;
+
+    flex: 0 0 auto;
+
+    margin: 0 2px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .section-nav {
+        border-radius: 11px;
+    }
+
+    .section-label {
+        display: none;
+    }
+
+    .nav-link {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+
+    .nav-link svg {
+        width: 17px;
+        height: 17px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="nav-container">
+<div id="navigation"></div>
 
-    <!-- MAIN -->
-    <div class="section">
+<script>
 
-        <div class="section-title">
-            <!-- Home -->
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M3 10.5L12 3l9 7.5"/>
-                <path d="M5 9.5V21h14V9.5"/>
-                <path d="M9 21v-7h6v7"/>
+/* ==========================================
+   NOTION PAGE LINKS
+========================================== */
+
+const pages = {
+
+    subjects: {
+        label: "Subjects",
+        url: "https://app.notion.com/p/Subjects-3d2ffd99271480b2af1afab4699a6bdd?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v15H4z"/>
+                <path d="M8 9h8M8 13h6"/>
             </svg>
-            Main
-        </div>
+        `
+    },
 
-        <div class="divider"></div>
-
-        <a class="nav-link" href="https://app.notion.com/p/3caffd99271480f6bed9cb36dbe92ed3?pvs=25">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M3 10.5L12 3l9 7.5"/>
-                <path d="M5 9.5V21h14V9.5"/>
-                <path d="M9 21v-7h6v7"/>
+    curriculum: {
+        label: "Curriculum",
+        url: "https://app.notion.com/p/Curriculum-3caffd992714802dad7ef86f8a524046?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M4 5a3 3 0 013-3h13v18H7a3 3 0 00-3 3V5z"/>
+                <path d="M7 20h13"/>
             </svg>
-            Home
-        </a>
+        `
+    },
 
-        
-
-<a class="nav-link" href="https://app.notion.com/p/Weekly-Planner-3caffd99271480b68c8cc9cc9045cfdf?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="4" width="18" height="17" rx="2"/>
-                <path d="M3 9h18M8 2v4M16 2v4"/>
+    lessons: {
+        label: "Lessons",
+        url: "https://app.notion.com/p/Lessons-3caffd9927148067b510d84edd4e1848?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M6 3h12v18H6z"/>
+                <path d="M9 7h6M9 11h6M9 15h4"/>
             </svg>
-            Weekly Planner
-        </a>
+        `
+    },
 
-    </div>
-
-
-    <!-- PLAN & ORGANIZE -->
-    <div class="section">
-
-        <div class="section-title">
-            <!-- Users -->
-            <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M2 21c0-4 3-7 7-7s7 3 7 7"/>
-                <path d="M16 4.5a4 4 0 010 7"/>
-                <path d="M17 14c3 .5 5 3 5 6"/>
+    assignments: {
+        label: "Assignments",
+        url: "https://app.notion.com/p/Assignments-3d7ffd99271480d6a4ffd17b5d31ad97?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M5 5h14v14H5z"/>
+                <path d="M8 12l3 3 5-6"/>
             </svg>
-            Plan &amp; Organize
-        </div>
+        `
+    },
 
-        <div class="divider"></div>
+    tasks: {
+        label: "Tasks",
+        url: "https://app.notion.com/p/Tasks-3caffd99271480ec897cc3352478cd35?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M5 5h14v14H5z"/>
+                <path d="M8 12l3 3 5-6"/>
+            </svg>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Students-3ceffd99271480e48c34cab85942727e?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    assessments: {
+        label: "Assessments",
+        url: "https://app.notion.com/p/Assessments-3caffd99271480c2bddffe0af926cea1?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M4 19V5"/>
+                <path d="M4 19h16"/>
+                <path d="M7 15l4-4 3 2 5-6"/>
+            </svg>
+        `
+    },
+
+    resources: {
+        label: "Resources",
+        url: "https://app.notion.com/p/Ressources-3caffd9927148092b293f58c97a4d0bf?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
+                <path d="M4 7l8-4 8 4v10l-8 4-8-4z"/>
+                <path d="M4 7l8 4 8-4M12 11v10"/>
+            </svg>
+        `
+    },
+
+    students: {
+        label: "Students",
+        url: "https://app.notion.com/p/Students-3ceffd99271480e48c34cab85942727e?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="7" r="4"/>
                 <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
             </svg>
-            Students
-        </a>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Classes-3caffd99271480b382a6e60ace7f0e4e?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    classes: {
+        label: "Classes",
+        url: "https://app.notion.com/p/Classes-3caffd99271480b382a6e60ace7f0e4e?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <circle cx="8" cy="8" r="3"/>
                 <circle cx="17" cy="9" r="3"/>
                 <path d="M2 20c0-3.5 2.5-6 6-6s6 2.5 6 6"/>
                 <path d="M14 15c4-.5 7 1.8 8 5"/>
             </svg>
-            Classes
-        </a>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Timetable-3ceffd99271480bc81b9fc69633b4fdf?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    timetable: {
+        label: "Timetable",
+        url: "https://app.notion.com/p/Timetable-3ceffd99271480bc81b9fc69633b4fdf?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"/>
                 <path d="M12 7v5l3 2"/>
             </svg>
-            Timetable
-        </a>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Attendance-3ceffd992714806e835bf826f7df8e56?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    attendance: {
+        label: "Attendance",
+        url: "https://app.notion.com/p/Attendance-3ceffd992714806e835bf826f7df8e56?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <path d="M5 4h14v16H5z"/>
                 <path d="M8 4v-2M16 4v-2"/>
                 <path d="M8 10h8M8 14h6"/>
             </svg>
-            Attendance
-        </a>
+        `
+    },
 
-    </div>
-
-
-    <!-- TEACH & ASSESS -->
-    <div class="section">
-
-        <div class="section-title">
-            <!-- Book -->
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 5a3 3 0 013-3h13v18H7a3 3 0 00-3 3V5z"/>
-                <path d="M7 20h13"/>
-            </svg>
-            Teach &amp; Assess
-        </div>
-
-        <div class="divider"></div>
-
-        <a class="nav-link" href="https://app.notion.com/p/Subjects-3d2ffd99271480b2af1afab4699a6bdd?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 5h16v15H4z"/>
-                <path d="M8 9h8M8 13h6"/>
-            </svg>
-            Subjects
-        </a>
-
-        <a class="nav-link" href="https://app.notion.com/p/Curriculum-3caffd992714802dad7ef86f8a524046?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 5a3 3 0 013-3h13v18H7a3 3 0 00-3 3V5z"/>
-                <path d="M7 20h13"/>
-            </svg>
-            Curriculum
-        </a>
-
-        <a class="nav-link" href="https://app.notion.com/p/Lessons-3caffd9927148067b510d84edd4e1848?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M6 3h12v18H6z"/>
-                <path d="M9 7h6M9 11h6M9 15h4"/>
-            </svg>
-            Lessons
-        </a>
-
-        <a class="nav-link" href="https://app.notion.com/p/Assignments-3d7ffd99271480d6a4ffd17b5d31ad97?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 5h14v14H5z"/>
-                <path d="M8 12l3 3 5-6"/>
-            </svg>
-            Assignments
-        </a>
-
-        <a class="nav-link" href="https://app.notion.com/p/Tasks-3caffd99271480ec897cc3352478cd35?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 5h14v14H5z"/>
-                <path d="M8 12l3 3 5-6"/>
-            </svg>
-            Tasks
-        </a>
-
-        <a class="nav-link" href="https://app.notion.com/p/Assessments-3caffd99271480c2bddffe0af926cea1?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 5h8M4 10h6M4 15h5"/>
-                <path d="M14 16l6-6"/>
-                <path d="M13 20l1-4 6-6 3 3-6 6z"/>
-            </svg>
-            Assessments
-        </a>
-
-        <a class="nav-link" href="https://app.notion.com/p/Ressources-3caffd9927148092b293f58c97a4d0bf?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 7l8-4 8 4v10l-8 4-8-4z"/>
-                <path d="M4 7l8 4 8-4M12 11v10"/>
-            </svg>
-            Resources
-        </a>
-
-    </div>
-
-
-    <!-- REVIEW & REFLECT -->
-    <div class="section">
-
-        <div class="section-title">
-            <!-- Progress -->
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 19V5"/>
-                <path d="M4 19h16"/>
-                <path d="M7 15l4-4 3 2 5-6"/>
-            </svg>
-            Review &amp; Reflect
-        </div>
-
-        <div class="divider"></div>
-
-        <a class="nav-link" href="https://app.notion.com/p/Events-3cbffd992714805f8709fd12d888e552?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    events: {
+        label: "Events",
+        url: "https://app.notion.com/p/Events-3cbffd992714805f8709fd12d888e552?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <rect x="3" y="4" width="18" height="17" rx="2"/>
-                <path d="M8 2v4M16 2v4M3 9h18"/>
+                <path d="M3 9h18M8 2v4M16 2v4"/>
             </svg>
-            Events
-        </a>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Daily-Notes-3cbffd99271480e8a059e26577c2aaba?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    daily: {
+        label: "Daily Notes",
+        url: "https://app.notion.com/p/Daily-Notes-3cbffd99271480e8a059e26577c2aaba?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <path d="M5 3h10l4 4v14H5z"/>
                 <path d="M15 3v5h5"/>
             </svg>
-            Daily Notes
-        </a>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Goals-3cbffd992714800ab5cce06e0bac7df1?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
+    goals: {
+        label: "Goals",
+        url: "https://app.notion.com/p/Goals-3cbffd992714800ab5cce06e0bac7df1?source=copy_link",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"/>
                 <circle cx="12" cy="12" r="4"/>
                 <path d="M12 3v5M21 12h-5"/>
             </svg>
-            Goals
-        </a>
+        `
+    },
 
-        <a class="nav-link" href="https://app.notion.com/p/Progress-Overview-684ffd992714829cbc6801229e2881d4">
-            <svg viewBox="0 0 24 24" fill="none">
+    progress: {
+        label: "Week's Progress",
+        url: "https://app.notion.com/p/Progress-Overview-684ffd992714829cbc6801229e2881d4",
+        icon: `
+            <svg viewBox="0 0 24 24">
                 <path d="M4 19V5"/>
                 <path d="M4 19h16"/>
                 <path d="M7 15l4-4 3 2 5-6"/>
             </svg>
-            Week's Progress
+        `
+    }
+};
+
+
+/* ==========================================
+   SECTION DEFINITIONS
+========================================== */
+
+const sections = {
+
+    teach: {
+        title: "Teach & Assess",
+        items: [
+            "subjects",
+            "curriculum",
+            "lessons",
+            "assignments",
+            "tasks",
+            "assessments",
+            "resources"
+        ]
+    },
+
+    plan: {
+        title: "Plan & Organize",
+        items: [
+            "students",
+            "classes",
+            "timetable",
+            "attendance"
+        ]
+    },
+
+    review: {
+        title: "Review & Reflect",
+        items: [
+            "events",
+            "daily",
+            "goals",
+            "progress"
+        ]
+    }
+
+};
+
+
+/* ==========================================
+   READ URL PARAMETERS
+========================================== */
+
+const params = new URLSearchParams(window.location.search);
+
+const sectionKey =
+    params.get("section") || "teach";
+
+const activeKey =
+    params.get("active") || "lessons";
+
+
+/* ==========================================
+   SELECT SECTION
+========================================== */
+
+const section =
+    sections[sectionKey] || sections.teach;
+
+
+/* ==========================================
+   BUILD NAVIGATION
+========================================== */
+
+document.getElementById("navigation").innerHTML = `
+
+<nav class="section-nav"
+     aria-label="${section.title}">
+
+    <span class="section-label">
+        ${section.title}
+    </span>
+
+    ${section.items.map((key, index) => `
+
+        ${index > 0
+            ? '<span class="divider"></span>'
+            : ''
+        }
+
+        <a
+            class="nav-link ${key === activeKey ? 'active' : ''}"
+            href="${pages[key].url}"
+            target="_top"
+            rel="noopener"
+        >
+
+            ${pages[key].icon}
+
+            <span>
+                ${pages[key].label}
+            </span>
+
         </a>
 
-    </div>
+    `).join("")}
 
+</nav>
 
-    <!-- SETUP -->
-    <div class="section">
+`;
 
-        <div class="section-title">
-            <!-- Settings -->
-            <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1-2 2-.1-.1a1.7 1.7 0 00-1.9-.3"/>
-                <path d="M9 19.4a1.7 1.7 0 00-1.9-.3l-.1.1-2-2 .1-.1A1.7 1.7 0 005.4 15"/>
-                <path d="M4.6 9a1.7 1.7 0 00-.3-1.9l-.1-.1 2-2 .1.1A1.7 1.7 0 008 5.4"/>
-                <path d="M15 4.6a1.7 1.7 0 001.9-.3l.1-.1 2 2-.1.1A1.7 1.7 0 0018.6 9"/>
-            </svg>
-            Setup
-        </div>
-
-        <div class="divider"></div>
-
-        <a class="nav-link" href="https://app.notion.com/p/Setup-Center-3caffd99271480d882b0f0ae4560baa0?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="8" cy="8" r="3"/>
-                <circle cx="16" cy="16" r="3"/>
-                <path d="M3 14c0-2.8 2.2-5 5-5M21 10c0 2.8-2.2 5-5 5"/>
-            </svg>
-            Setup Center
-        </a>
-
-    </div>
-
-
-    <!-- QUICK ACTIONS -->
-    <div class="quick-actions">
-
-        <div class="quick-title">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M13 2L4 14h7l-1 8 10-13h-7z"/>
-            </svg>
-            Quick Actions
-        </div>
-
-        <a class="quick-link" href="https://app.notion.com/p/Lessons-3caffd9927148067b510d84edd4e1848?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 3h14v18H5z"/>
-                <path d="M8 7h8M8 11h8"/>
-            </svg>
-            New Lesson
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Tasks-3caffd99271480ec897cc3352478cd35?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 5h14v14H5z"/>
-                <path d="M8 12l3 3 5-6"/>
-            </svg>
-            New Task
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Assignments-3d7ffd99271480d6a4ffd17b5d31ad97?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 5h14v14H5z"/>
-                <path d="M8 12l3 3 5-6"/>
-            </svg>
-            New Assignment
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Assessments-3caffd99271480c2bddffe0af926cea1?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 5h8M4 10h6M4 15h5"/>
-                <path d="M14 16l6-6"/>
-            </svg>
-            New Assessment
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Ressources-3caffd9927148092b293f58c97a4d0bf?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 7l8-4 8 4v10l-8 4-8-4z"/>
-            </svg>
-            New Resource
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Events-3cbffd992714805f8709fd12d888e552?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="4" width="18" height="17" rx="2"/>
-                <path d="M3 9h18"/>
-            </svg>
-            New Event
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Goals-3cbffd992714800ab5cce06e0bac7df1?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9"/>
-                <circle cx="12" cy="12" r="4"/>
-            </svg>
-            New Goal
-        </a>
-
-        <a class="quick-link" href="https://app.notion.com/p/Daily-Notes-3cbffd99271480e8a059e26577c2aaba?source=copy_link">
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 3h10l4 4v14H5z"/>
-            </svg>
-            New Daily Note
-        </a>
-
-    </div>
-
-</div>
+</script>
 
 </body>
 </html>
