@@ -1,542 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Teacher Planner Navigation</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+	<!-- Google Font -->
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                     Inter, Helvetica, Arial, sans-serif;
-        background: #ffffff;
-        color: #1f2937;
-    }
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 
-    /* =========================
-       NAVIGATION CONTAINER
-       ========================= */
+	<!-------->
 
-    .teacher-nav {
-        width: 100%;
-        max-width: 1200px;
-        margin: 30px auto;
-        padding: 14px 18px;
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
 
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 18px;
 
-        box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    }
+		.navMenu {
+			font-family: 'Advent Pro', sans-serif;
+			padding: 8px;
+			text-align: center;
+			margin: 7px auto;
+			width: fit-content;
+		}
 
-    /* =========================
-       BRAND
-       ========================= */
+		.navMenu a {
+			color: #272727;
+			text-decoration: none;
+			text-transform: uppercase;
+			display: inline-block;
+			padding: 6px;
+		}
 
-    .nav-brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+		.background {
+			background-color: #ece5f0;
+		}
 
-        padding: 8px 12px 14px;
-        margin-bottom: 10px;
+		.border {
+			border: 1px solid #cccccc;
 
-        border-bottom: 1px solid #eeeeee;
-    }
+		}
 
-    .brand-icon {
-        width: 38px;
-        height: 38px;
+		.navMenu a:hover {
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border-radius: 10px;
-        background: #f3f4f6;
-    }
-
-    .brand-icon svg {
-        width: 21px;
-        height: 21px;
-    }
-
-    .brand-title {
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: -0.2px;
-    }
-
-    .brand-subtitle {
-        font-size: 11px;
-        color: #8b95a5;
-        margin-top: 2px;
-    }
-
-    /* =========================
-       NAVIGATION
-       ========================= */
-
-    .nav-items {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        overflow-x: auto;
-
-        scrollbar-width: none;
-    }
-
-    .nav-items::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-item {
-        position: relative;
-
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-        padding: 10px 13px;
-
-        text-decoration: none;
-        color: #4b5563;
-
-        font-size: 13px;
-        font-weight: 500;
-
-        border-radius: 11px;
-
-        white-space: nowrap;
-
-        transition:
-            background 0.2s ease,
-            color 0.2s ease,
-            transform 0.2s ease;
-    }
-
-    .nav-item svg {
-        width: 18px;
-        height: 18px;
-
-        stroke: currentColor;
-        stroke-width: 1.8;
-        fill: none;
-
-        flex-shrink: 0;
-    }
-
-    .nav-item:hover {
-        background: #f5f7fa;
-        color: #111827;
-        transform: translateY(-1px);
-    }
-
-    /* Active item */
-
-    .nav-item.active {
-        background: #eef2f7;
-        color: #111827;
-        font-weight: 650;
-    }
-
-    .nav-item.active::after {
-        content: "";
-
-        position: absolute;
-        bottom: 3px;
-        left: 50%;
-
-        width: 4px;
-        height: 4px;
-
-        border-radius: 50%;
-        background: #374151;
-
-        transform: translateX(-50%);
-    }
-
-    /* =========================
-       SEPARATOR
-       ========================= */
-
-    .nav-separator {
-        width: 1px;
-        height: 25px;
-        background: #e5e7eb;
-        margin: 0 3px;
-        flex-shrink: 0;
-    }
-
-    /* =========================
-       MOBILE
-       ========================= */
-
-    @media (max-width: 700px) {
-
-        .teacher-nav {
-            margin: 15px;
-            padding: 12px;
-            border-radius: 15px;
-        }
-
-        .brand-title {
-            font-size: 16px;
-        }
-
-        .nav-items {
-            gap: 3px;
-        }
-
-        .nav-item {
-            padding: 9px 11px;
-            font-size: 12px;
-        }
-
-        .nav-item svg {
-            width: 16px;
-            height: 16px;
-        }
-    }
-
-</style>
+			color: #d09c0b;
+		}
+	</style>
 </head>
 
 <body>
 
-
-<!-- =====================================
-     TEACHER PLANNER NAVIGATION
-     ===================================== -->
-
-<nav class="teacher-nav">
-
-    <!-- BRAND -->
-
-    <div class="nav-brand">
-
-        <div class="brand-icon">
-
-            <!-- Graduation cap -->
-
-            <svg viewBox="0 0 24 24">
-                <path d="M3 9l9-5 9 5-9 5-9-5z"/>
-                <path d="M7 11v5c2 2 8 2 10 0v-5"/>
-                <path d="M21 9v6"/>
-            </svg>
-
-        </div>
-
-        <div>
-            <div class="brand-title">
-                Teacher Planner
-            </div>
-
-            <div class="brand-subtitle">
-                Plan • Teach • Assess • Reflect
-            </div>
-        </div>
-
-    </div>
-
-
-    <!-- NAVIGATION ITEMS -->
-
-    <div class="nav-items">
-
-
-        <!-- HOME -->
-
-        <a href="#" class="nav-item active">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M3 11.5L12 4l9 7.5"/>
-                <path d="M5 10v10h14V10"/>
-                <path d="M9 20v-6h6v6"/>
-            </svg>
-
-            Home
-
-        </a>
-
-
-        <!-- WEEKLY PLANNER -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <rect x="3" y="5" width="18" height="16" rx="2"/>
-                <path d="M7 3v4M17 3v4M3 10h18"/>
-                <path d="M7 14h3M14 14h3M7 18h3"/>
-            </svg>
-
-            Weekly Planner
-
-        </a>
-
-
-        <div class="nav-separator"></div>
-
-
-        <!-- STUDENTS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="9" cy="8" r="3"/>
-                <circle cx="17" cy="9" r="2.5"/>
-                <path d="M3 20c0-4 2.5-6 6-6s6 2 6 6"/>
-                <path d="M15 14c3 0 5 2 5 5"/>
-            </svg>
-
-            Students
-
-        </a>
-
-
-        <!-- CLASSES -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="8" cy="8" r="3"/>
-                <circle cx="16" cy="8" r="3"/>
-                <path d="M3 19c0-3 2-5 5-5s5 2 5 5"/>
-                <path d="M11 19c0-3 2-5 5-5s5 2 5 5"/>
-            </svg>
-
-            Classes
-
-        </a>
-
-
-        <!-- TIMETABLE -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="8.5"/>
-                <path d="M12 7v5l3 2"/>
-            </svg>
-
-            Timetable
-
-        </a>
-
-
-        <!-- ATTENDANCE -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <rect x="5" y="3" width="14" height="18" rx="2"/>
-                <path d="M8 8l1.5 1.5L12 7"/>
-                <path d="M8 13h8M8 17h5"/>
-            </svg>
-
-            Attendance
-
-        </a>
-
-
-        <div class="nav-separator"></div>
-
-
-        <!-- CURRICULUM -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M5 4h13a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/>
-                <path d="M5 18c0-1.1.9-2 2-2h13"/>
-                <path d="M8 8h8M8 12h6"/>
-            </svg>
-
-            Curriculum
-
-        </a>
-
-
-        <!-- LESSONS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M4 5h16v14H4z"/>
-                <path d="M8 5v14"/>
-                <path d="M11 9h6M11 13h6"/>
-            </svg>
-
-            Lessons
-
-        </a>
-
-
-        <!-- ASSIGNMENTS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M6 3h12v18H6z"/>
-                <path d="M9 7h6M9 11h6M9 15h3"/>
-                <path d="M9 3v3h6V3"/>
-            </svg>
-
-            Assignments
-
-        </a>
-
-
-        <!-- TASKS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                <path d="M8 12l2.5 2.5L16 9"/>
-            </svg>
-
-            Tasks
-
-        </a>
-
-
-        <!-- MATERIALS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M4 6h7l2 2h7v11H4z"/>
-                <path d="M4 6v-2h7l2 2"/>
-            </svg>
-
-            Materials
-
-        </a>
-
-
-        <!-- ASSESSMENTS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M6 3h12v18H6z"/>
-                <path d="M9 7h6M9 11h6"/>
-                <path d="M9 16l2 2 4-4"/>
-            </svg>
-
-            Assessments
-
-        </a>
-
-
-        <!-- RESOURCES -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M5 4h6l2 2h6v14H5z"/>
-                <path d="M8 10h8M8 14h6"/>
-            </svg>
-
-            Resources
-
-        </a>
-
-
-        <div class="nav-separator"></div>
-
-
-        <!-- EVENTS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <rect x="4" y="5" width="16" height="16" rx="2"/>
-                <path d="M8 3v4M16 3v4M4 10h16"/>
-                <path d="M8 14h3M14 14h2"/>
-            </svg>
-
-            Events
-
-        </a>
-
-
-        <!-- DAILY NOTES -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M5 3h11l3 3v15H5z"/>
-                <path d="M16 3v4h4"/>
-                <path d="M8 11h8M8 15h6"/>
-            </svg>
-
-            Daily Notes
-
-        </a>
-
-
-        <!-- GOALS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="8"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="12" cy="12" r="1"/>
-                <path d="M18 6l3-3"/>
-            </svg>
-
-            Goals
-
-        </a>
-
-
-        <!-- PROGRESS -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <path d="M4 19V5"/>
-                <path d="M4 19h17"/>
-                <path d="M7 15l4-4 3 2 6-7"/>
-            </svg>
-
-            Progress
-
-        </a>
-
-
-        <div class="nav-separator"></div>
-
-
-        <!-- SETUP -->
-
-        <a href="#" class="nav-item">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-2.6V20a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.6-1H6v-2.6h.2A1.7 1.7 0 0 0 7.8 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.2h2.6V5a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2V14h-.2a1.7 1.7 0 0 0-1.6 1z"/>
-            </svg>
-
-            Setup
-
-        </a>
-
-
-    </div>
-
-</nav>
+	<nav class="navMenu  border">
+		<a id="home" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-house"></i> Home</a>
+		<a id="inbox" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-inbox"></i> Inbox</a>
+		<a id="week" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-calendar-week"></i> Planner</a>
+		<a id="projects" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-briefcase"></i> Projects</a>
+		<a id="tasks" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-list-check"></i> Tasks</a>
+		<a id="business" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-money-bill-wave"></i> Business</a>
+		<a id="knowledge" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-lightbulb"></i> Knowledge</a>
+		<a id="topics" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-layer-group"></i> Topics</a>
+		<a id="notes" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-book"></i> Notes</a>
+		<a id="media" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-bookmark"></i> Media</a>
+		<a id="resourses" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-wrench"></i> Resourses</a>
+		<a id="lifewiki" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-heart"></i> Lifewiki</a>
+
+
+
+	</nav>
+
+
+	<script>
+
+		let direction = "horizontal";
+		if (direction === "vertical") {
+			document.head.insertAdjacentHTML("beforeend", `<style>.navMenu a {display: block; text-align:left; margin:7px} i{width:15px; margin-right:5px} .navMenu{margin:3px}</style>`)
+		}
+
+
+		function navigate(id) {
+
+			if (id == 'home')
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "inbox")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "week")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "month")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "projects")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "business")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "tasks")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "knowledge")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "topics")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "notes")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "media")
+				window.open("https://example.com", '_blank').focus();
+			else if (id == "resourses")
+				window.open("https://example.com3", '_blank').focus();
+			else if (id == "lifewiki")
+				window.open("https://example.com", '_blank').focus();
+
+		}
+	</script>
 
 
 </body>
+
 </html>
