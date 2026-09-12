@@ -7,10 +7,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 	<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nanum+Myeongjo&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<!--- <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"> --->
 
 	<!-------->
 
@@ -24,7 +27,9 @@
 
 
 		.navMenu {
-			font-family: 'Advent Pro', sans-serif;
+			font-family: 'Poppins', sans-serif;
+			font-size: 10 px;
+			font-weight:400;
 			padding: 8px;
 			text-align: center;
 			margin: 7px auto;
@@ -32,9 +37,9 @@
 		}
 
 		.navMenu a {
-			color: #272727;
+			color: #2c2c2b;
 			text-decoration: none;
-			text-transform: uppercase;
+			
 			display: inline-block;
 			padding: 6px;
 		}
@@ -50,7 +55,7 @@
 
 		.navMenu a:hover {
 
-			color: #d09c0b;
+			color: green;
 		}
 	</style>
 </head>
@@ -58,18 +63,18 @@
 <body>
 
 	<nav class="navMenu  border">
-		<a id="home" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-house"></i> Home</a>
-		<a id="inbox" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-inbox"></i> Inbox</a>
-		<a id="week" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-calendar-week"></i> Planner</a>
-		<a id="projects" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-briefcase"></i> Projects</a>
-		<a id="tasks" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-list-check"></i> Tasks</a>
-		<a id="business" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-money-bill-wave"></i> Business</a>
-		<a id="knowledge" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-lightbulb"></i> Knowledge</a>
-		<a id="topics" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-layer-group"></i> Topics</a>
-		<a id="notes" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-book"></i> Notes</a>
-		<a id="media" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-bookmark"></i> Media</a>
-		<a id="resourses" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-wrench"></i> Resourses</a>
-		<a id="lifewiki" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-heart"></i> Lifewiki</a>
+		<a id="home" onclick="navigate(this.id)" href="https://app.notion.com/p/3d8ffd99271480eb8eb7cfd445370e72?pvs=25"> <i class="fa-solid fa-house"></i> Home</a>
+		<a id="inbox" onclick="navigate(this.id)" href="https://app.notion.com/p/Subjects-865ffd99271483598cd50134e3d5b7f3?source=copy_link"> <i class="fa-solid fa-layer-group"></i> Subjects</a>
+		<a id="week" onclick="navigate(this.id)" href="https://app.notion.com/p/Curriculum-a0affd99271483acb5f681cc35518c75?source=copy_link"> <i class="fa-notdog-duo fa-solid fa-book-open"></i> Curriculum</a>
+		<a id="projects" onclick="navigate(this.id)" href="https://app.notion.com/p/Lessons-ab3ffd992714828a823d8116a55d8352?source=copy_link"> <i class="fa-solid fa-book"></i> Lessons</a>
+		<a id="tasks" onclick="navigate(this.id)" href="https://app.notion.com/p/Assignments-740ffd992714823884eb8178ef768420?source=copy_link"> <i class="fa-sharp fa-solid fa-pen"></i> Assignments</a>
+		<a id="business" onclick="navigate(this.id)" href="https://app.notion.com/p/Tasks-172ffd9927148375bd3b016c78195da4?source=copy_link"> <i class="fa-sharp fa-solid fa-square-check"></i> Tasks</a>
+		<a id="knowledge" onclick="navigate(this.id)" href="https://app.notion.com/p/Assessments-ca6ffd99271482b0ac1f0168c0b1266b?source=copy_link"> <i class="fa-solid fa-pen-to-square"></i> Assessments</a>
+		<a id="topics" onclick="navigate(this.id)" href="https://app.notion.com/p/Materials-592ffd992714838f908a81ca594049bc?source=copy_link"> <i class="fa-solid fa-box"></i> Materials</a>
+		<a id="notes" onclick="navigate(this.id)" href="https://app.notion.com/p/Ressources-be3ffd9927148223b04f01a1a6376e6b?source=copy_link"> <i class="fa-solid fa-paperclip"></i> Ressources</a>
+		<a id="media" onclick="navigate(this.id)" href="https://app.notion.com/p/Events-f52ffd992714826497df81765673b506?source=copy_link"> <i class="fa-solid fa-calendar-day"></i> Events</a>
+		<a id="resourses" onclick="navigate(this.id)" href="https://app.notion.com/p/Daily-Notes-231ffd992714832990e3810dcf08ffff?source=copy_link"> <i class="fa-sharp fa-solid fa-file"></i> Daily Notes</a>
+		<a id="lifewiki" onclick="navigate(this.id)" href="https://app.notion.com/p/Goals-281ffd9927148309aa5f8112ea7042aa?source=copy_link"> <i class="fa-solid fa-bullseye"></i> Goals</a>
 
 
 
@@ -86,32 +91,30 @@
 
 		function navigate(id) {
 
-			if (id == 'home')
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "inbox")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "week")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "month")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "projects")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "business")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "tasks")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "knowledge")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "topics")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "notes")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "media")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "resourses")
-				window.open("https://example.com3", '_blank').focus();
-			else if (id == "lifewiki")
-				window.open("https://example.com", '_blank').focus();
+			if (id == 'Home')
+				window.open("https://app.notion.com/p/3d8ffd99271480eb8eb7cfd445370e72?pvs=25", '_blank').focus();
+			else if (id == "Subjects")
+				window.open("https://app.notion.com/p/Subjects-865ffd99271483598cd50134e3d5b7f3?source=copy_link", '_blank').focus();
+			else if (id == "Curriculum")
+				window.open("https://app.notion.com/p/Curriculum-a0affd99271483acb5f681cc35518c75?source=copy_link", '_blank').focus();
+			else if (id == "Lessons")
+				window.open("https://app.notion.com/p/Lessons-ab3ffd992714828a823d8116a55d8352?source=copy_link", '_blank').focus();
+			else if (id == "Assignments")
+				window.open("https://app.notion.com/p/Assignments-740ffd992714823884eb8178ef768420?source=copy_link", '_blank').focus();
+			else if (id == "Tasks")
+				window.open("https://app.notion.com/p/Tasks-172ffd9927148375bd3b016c78195da4?source=copy_link", '_blank').focus();
+			else if (id == "Assessments")
+				window.open("https://app.notion.com/p/Assessments-ca6ffd99271482b0ac1f0168c0b1266b?source=copy_link", '_blank').focus();
+			else if (id == "Materials")
+				window.open("https://app.notion.com/p/Materials-592ffd992714838f908a81ca594049bc?source=copy_link", '_blank').focus();
+			else if (id == "Ressources")
+				window.open("https://app.notion.com/p/Ressources-be3ffd9927148223b04f01a1a6376e6b?source=copy_link", '_blank').focus();
+			else if (id == "Events")
+				window.open("https://app.notion.com/p/Events-f52ffd992714826497df81765673b506?source=copy_link", '_blank').focus();
+			else if (id == "Daily Notes")
+				window.open("https://app.notion.com/p/Daily-Notes-231ffd992714832990e3810dcf08ffff?source=copy_link", '_blank').focus();
+			else if (id == "Goals")
+				window.open("https://app.notion.com/p/Goals-281ffd9927148309aa5f8112ea7042aa?source=copy_link", '_blank').focus();
 
 		}
 	</script>
