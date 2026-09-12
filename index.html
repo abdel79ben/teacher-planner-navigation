@@ -4,465 +4,539 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Teacher Planner Section Navigation</title>
+<title>Teacher Planner Navigation</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 8px 0;
-    background: transparent;
-    font-family: "Poppins", -apple-system, BlinkMacSystemFont,
-                 "Segoe UI", sans-serif;
-    color: #26332F;
-}
-
-/* =========================
-   NAVIGATION CONTAINER
-========================= */
-
-.section-nav {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    padding: 7px;
-
-    background: #FCFBF8;
-    border: 1px solid #DCE8E1;
-    border-radius: 14px;
-
-    overflow-x: auto;
-    white-space: nowrap;
-
-    scrollbar-width: none;
-}
-
-.section-nav::-webkit-scrollbar {
-    display: none;
-}
-
-/* =========================
-   SECTION LABEL
-========================= */
-
-.section-label {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 0 10px;
-    margin-right: 2px;
-
-    color: #4F6F64;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-
-    flex-shrink: 0;
-}
-
-/* =========================
-   NAVIGATION LINKS
-========================= */
-
-.nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-
-    min-height: 38px;
-
-    padding: 8px 13px;
-
-    color: #64746E;
-    text-decoration: none;
-
-    border-radius: 10px;
-
-    font-size: 13px;
-    font-weight: 500;
-
-    transition:
-        background 0.18s ease,
-        color 0.18s ease;
-
-    flex-shrink: 0;
-}
-
-.nav-link:hover {
-    background: #EAF2EE;
-    color: #4F6F64;
-}
-
-/* ACTIVE PAGE */
-
-.nav-link.active {
-    background: #EAF2EE;
-    color: #4F6F64;
-    font-weight: 600;
-}
-
-/* =========================
-   ICONS
-========================= */
-
-.nav-link svg {
-    width: 18px;
-    height: 18px;
-
-    flex: 0 0 auto;
-
-    stroke: currentColor;
-    stroke-width: 1.9;
-
-    fill: none;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-/* =========================
-   DIVIDERS
-========================= */
-
-.divider {
-    width: 1px;
-    height: 22px;
-
-    background: #DCE8E1;
-
-    flex: 0 0 auto;
-
-    margin: 0 2px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-
-    .section-nav {
-        border-radius: 11px;
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
-    .section-label {
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                     Inter, Helvetica, Arial, sans-serif;
+        background: #ffffff;
+        color: #1f2937;
+    }
+
+    /* =========================
+       NAVIGATION CONTAINER
+       ========================= */
+
+    .teacher-nav {
+        width: 100%;
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 14px 18px;
+
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+
+        box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+
+    /* =========================
+       BRAND
+       ========================= */
+
+    .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        padding: 8px 12px 14px;
+        margin-bottom: 10px;
+
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+        background: #f3f4f6;
+    }
+
+    .brand-icon svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .brand-title {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+    }
+
+    .brand-subtitle {
+        font-size: 11px;
+        color: #8b95a5;
+        margin-top: 2px;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    .nav-items {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow-x: auto;
+
+        scrollbar-width: none;
+    }
+
+    .nav-items::-webkit-scrollbar {
         display: none;
     }
 
-    .nav-link {
-        padding: 8px 11px;
-        font-size: 12px;
+    .nav-item {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        padding: 10px 13px;
+
+        text-decoration: none;
+        color: #4b5563;
+
+        font-size: 13px;
+        font-weight: 500;
+
+        border-radius: 11px;
+
+        white-space: nowrap;
+
+        transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            transform 0.2s ease;
     }
 
-    .nav-link svg {
-        width: 17px;
-        height: 17px;
+    .nav-item svg {
+        width: 18px;
+        height: 18px;
+
+        stroke: currentColor;
+        stroke-width: 1.8;
+        fill: none;
+
+        flex-shrink: 0;
     }
-}
+
+    .nav-item:hover {
+        background: #f5f7fa;
+        color: #111827;
+        transform: translateY(-1px);
+    }
+
+    /* Active item */
+
+    .nav-item.active {
+        background: #eef2f7;
+        color: #111827;
+        font-weight: 650;
+    }
+
+    .nav-item.active::after {
+        content: "";
+
+        position: absolute;
+        bottom: 3px;
+        left: 50%;
+
+        width: 4px;
+        height: 4px;
+
+        border-radius: 50%;
+        background: #374151;
+
+        transform: translateX(-50%);
+    }
+
+    /* =========================
+       SEPARATOR
+       ========================= */
+
+    .nav-separator {
+        width: 1px;
+        height: 25px;
+        background: #e5e7eb;
+        margin: 0 3px;
+        flex-shrink: 0;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 700px) {
+
+        .teacher-nav {
+            margin: 15px;
+            padding: 12px;
+            border-radius: 15px;
+        }
+
+        .brand-title {
+            font-size: 16px;
+        }
+
+        .nav-items {
+            gap: 3px;
+        }
+
+        .nav-item {
+            padding: 9px 11px;
+            font-size: 12px;
+        }
+
+        .nav-item svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
 </style>
 </head>
 
 <body>
 
-<div id="navigation"></div>
 
-<script>
+<!-- =====================================
+     TEACHER PLANNER NAVIGATION
+     ===================================== -->
 
-/* ==========================================
-   NOTION PAGE LINKS
-========================================== */
+<nav class="teacher-nav">
 
-const pages = {
+    <!-- BRAND -->
 
-    subjects: {
-        label: "Subjects",
-        url: "https://app.notion.com/p/Subjects-3d2ffd99271480b2af1afab4699a6bdd?source=copy_link",
-        icon: `
+    <div class="nav-brand">
+
+        <div class="brand-icon">
+
+            <!-- Graduation cap -->
+
             <svg viewBox="0 0 24 24">
-                <path d="M4 5h16v15H4z"/>
-                <path d="M8 9h8M8 13h6"/>
+                <path d="M3 9l9-5 9 5-9 5-9-5z"/>
+                <path d="M7 11v5c2 2 8 2 10 0v-5"/>
+                <path d="M21 9v6"/>
             </svg>
-        `
-    },
 
-    curriculum: {
-        label: "Curriculum",
-        url: "https://app.notion.com/p/Curriculum-3caffd992714802dad7ef86f8a524046?source=copy_link",
-        icon: `
+        </div>
+
+        <div>
+            <div class="brand-title">
+                Teacher Planner
+            </div>
+
+            <div class="brand-subtitle">
+                Plan • Teach • Assess • Reflect
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION ITEMS -->
+
+    <div class="nav-items">
+
+
+        <!-- HOME -->
+
+        <a href="#" class="nav-item active">
+
             <svg viewBox="0 0 24 24">
-                <path d="M4 5a3 3 0 013-3h13v18H7a3 3 0 00-3 3V5z"/>
-                <path d="M7 20h13"/>
+                <path d="M3 11.5L12 4l9 7.5"/>
+                <path d="M5 10v10h14V10"/>
+                <path d="M9 20v-6h6v6"/>
             </svg>
-        `
-    },
 
-    lessons: {
-        label: "Lessons",
-        url: "https://app.notion.com/p/Lessons-3caffd9927148067b510d84edd4e1848?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M6 3h12v18H6z"/>
-                <path d="M9 7h6M9 11h6M9 15h4"/>
-            </svg>
-        `
-    },
-
-    assignments: {
-        label: "Assignments",
-        url: "https://app.notion.com/p/Assignments-3d7ffd99271480d6a4ffd17b5d31ad97?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M5 5h14v14H5z"/>
-                <path d="M8 12l3 3 5-6"/>
-            </svg>
-        `
-    },
-
-    tasks: {
-        label: "Tasks",
-        url: "https://app.notion.com/p/Tasks-3caffd99271480ec897cc3352478cd35?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M5 5h14v14H5z"/>
-                <path d="M8 12l3 3 5-6"/>
-            </svg>
-        `
-    },
-
-    assessments: {
-        label: "Assessments",
-        url: "https://app.notion.com/p/Assessments-3caffd99271480c2bddffe0af926cea1?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M4 19V5"/>
-                <path d="M4 19h16"/>
-                <path d="M7 15l4-4 3 2 5-6"/>
-            </svg>
-        `
-    },
-
-    resources: {
-        label: "Resources",
-        url: "https://app.notion.com/p/Ressources-3caffd9927148092b293f58c97a4d0bf?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M4 7l8-4 8 4v10l-8 4-8-4z"/>
-                <path d="M4 7l8 4 8-4M12 11v10"/>
-            </svg>
-        `
-    },
-
-    students: {
-        label: "Students",
-        url: "https://app.notion.com/p/Students-3ceffd99271480e48c34cab85942727e?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="7" r="4"/>
-                <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
-            </svg>
-        `
-    },
-
-    classes: {
-        label: "Classes",
-        url: "https://app.notion.com/p/Classes-3caffd99271480b382a6e60ace7f0e4e?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <circle cx="8" cy="8" r="3"/>
-                <circle cx="17" cy="9" r="3"/>
-                <path d="M2 20c0-3.5 2.5-6 6-6s6 2.5 6 6"/>
-                <path d="M14 15c4-.5 7 1.8 8 5"/>
-            </svg>
-        `
-    },
-
-    timetable: {
-        label: "Timetable",
-        url: "https://app.notion.com/p/Timetable-3ceffd99271480bc81b9fc69633b4fdf?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M12 7v5l3 2"/>
-            </svg>
-        `
-    },
-
-    attendance: {
-        label: "Attendance",
-        url: "https://app.notion.com/p/Attendance-3ceffd992714806e835bf826f7df8e56?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M5 4h14v16H5z"/>
-                <path d="M8 4v-2M16 4v-2"/>
-                <path d="M8 10h8M8 14h6"/>
-            </svg>
-        `
-    },
-
-    events: {
-        label: "Events",
-        url: "https://app.notion.com/p/Events-3cbffd992714805f8709fd12d888e552?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="17" rx="2"/>
-                <path d="M3 9h18M8 2v4M16 2v4"/>
-            </svg>
-        `
-    },
-
-    daily: {
-        label: "Daily Notes",
-        url: "https://app.notion.com/p/Daily-Notes-3cbffd99271480e8a059e26577c2aaba?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M5 3h10l4 4v14H5z"/>
-                <path d="M15 3v5h5"/>
-            </svg>
-        `
-    },
-
-    goals: {
-        label: "Goals",
-        url: "https://app.notion.com/p/Goals-3cbffd992714800ab5cce06e0bac7df1?source=copy_link",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9"/>
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 3v5M21 12h-5"/>
-            </svg>
-        `
-    },
-
-    progress: {
-        label: "Week's Progress",
-        url: "https://app.notion.com/p/Progress-Overview-684ffd992714829cbc6801229e2881d4",
-        icon: `
-            <svg viewBox="0 0 24 24">
-                <path d="M4 19V5"/>
-                <path d="M4 19h16"/>
-                <path d="M7 15l4-4 3 2 5-6"/>
-            </svg>
-        `
-    }
-};
-
-
-/* ==========================================
-   SECTION DEFINITIONS
-========================================== */
-
-const sections = {
-
-    teach: {
-        title: "Teach & Assess",
-        items: [
-            "subjects",
-            "curriculum",
-            "lessons",
-            "assignments",
-            "tasks",
-            "assessments",
-            "resources"
-        ]
-    },
-
-    plan: {
-        title: "Plan & Organize",
-        items: [
-            "students",
-            "classes",
-            "timetable",
-            "attendance"
-        ]
-    },
-
-    review: {
-        title: "Review & Reflect",
-        items: [
-            "events",
-            "daily",
-            "goals",
-            "progress"
-        ]
-    }
-
-};
-
-
-/* ==========================================
-   READ URL PARAMETERS
-========================================== */
-
-const params = new URLSearchParams(window.location.search);
-
-const sectionKey =
-    params.get("section") || "teach";
-
-const activeKey =
-    params.get("active") || "lessons";
-
-
-/* ==========================================
-   SELECT SECTION
-========================================== */
-
-const section =
-    sections[sectionKey] || sections.teach;
-
-
-/* ==========================================
-   BUILD NAVIGATION
-========================================== */
-
-document.getElementById("navigation").innerHTML = `
-
-<nav class="section-nav"
-     aria-label="${section.title}">
-
-    <span class="section-label">
-        ${section.title}
-    </span>
-
-    ${section.items.map((key, index) => `
-
-        ${index > 0
-            ? '<span class="divider"></span>'
-            : ''
-        }
-
-        <a
-            class="nav-link ${key === activeKey ? 'active' : ''}"
-            href="${pages[key].url}"
-            target="_top"
-            rel="noopener"
-        >
-
-            ${pages[key].icon}
-
-            <span>
-                ${pages[key].label}
-            </span>
+            Home
 
         </a>
 
-    `).join("")}
+
+        <!-- WEEKLY PLANNER -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="16" rx="2"/>
+                <path d="M7 3v4M17 3v4M3 10h18"/>
+                <path d="M7 14h3M14 14h3M7 18h3"/>
+            </svg>
+
+            Weekly Planner
+
+        </a>
+
+
+        <div class="nav-separator"></div>
+
+
+        <!-- STUDENTS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3"/>
+                <circle cx="17" cy="9" r="2.5"/>
+                <path d="M3 20c0-4 2.5-6 6-6s6 2 6 6"/>
+                <path d="M15 14c3 0 5 2 5 5"/>
+            </svg>
+
+            Students
+
+        </a>
+
+
+        <!-- CLASSES -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="8" cy="8" r="3"/>
+                <circle cx="16" cy="8" r="3"/>
+                <path d="M3 19c0-3 2-5 5-5s5 2 5 5"/>
+                <path d="M11 19c0-3 2-5 5-5s5 2 5 5"/>
+            </svg>
+
+            Classes
+
+        </a>
+
+
+        <!-- TIMETABLE -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8.5"/>
+                <path d="M12 7v5l3 2"/>
+            </svg>
+
+            Timetable
+
+        </a>
+
+
+        <!-- ATTENDANCE -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <rect x="5" y="3" width="14" height="18" rx="2"/>
+                <path d="M8 8l1.5 1.5L12 7"/>
+                <path d="M8 13h8M8 17h5"/>
+            </svg>
+
+            Attendance
+
+        </a>
+
+
+        <div class="nav-separator"></div>
+
+
+        <!-- CURRICULUM -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M5 4h13a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/>
+                <path d="M5 18c0-1.1.9-2 2-2h13"/>
+                <path d="M8 8h8M8 12h6"/>
+            </svg>
+
+            Curriculum
+
+        </a>
+
+
+        <!-- LESSONS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v14H4z"/>
+                <path d="M8 5v14"/>
+                <path d="M11 9h6M11 13h6"/>
+            </svg>
+
+            Lessons
+
+        </a>
+
+
+        <!-- ASSIGNMENTS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M6 3h12v18H6z"/>
+                <path d="M9 7h6M9 11h6M9 15h3"/>
+                <path d="M9 3v3h6V3"/>
+            </svg>
+
+            Assignments
+
+        </a>
+
+
+        <!-- TASKS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <path d="M8 12l2.5 2.5L16 9"/>
+            </svg>
+
+            Tasks
+
+        </a>
+
+
+        <!-- MATERIALS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 6h7l2 2h7v11H4z"/>
+                <path d="M4 6v-2h7l2 2"/>
+            </svg>
+
+            Materials
+
+        </a>
+
+
+        <!-- ASSESSMENTS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M6 3h12v18H6z"/>
+                <path d="M9 7h6M9 11h6"/>
+                <path d="M9 16l2 2 4-4"/>
+            </svg>
+
+            Assessments
+
+        </a>
+
+
+        <!-- RESOURCES -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M5 4h6l2 2h6v14H5z"/>
+                <path d="M8 10h8M8 14h6"/>
+            </svg>
+
+            Resources
+
+        </a>
+
+
+        <div class="nav-separator"></div>
+
+
+        <!-- EVENTS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <rect x="4" y="5" width="16" height="16" rx="2"/>
+                <path d="M8 3v4M16 3v4M4 10h16"/>
+                <path d="M8 14h3M14 14h2"/>
+            </svg>
+
+            Events
+
+        </a>
+
+
+        <!-- DAILY NOTES -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M5 3h11l3 3v15H5z"/>
+                <path d="M16 3v4h4"/>
+                <path d="M8 11h8M8 15h6"/>
+            </svg>
+
+            Daily Notes
+
+        </a>
+
+
+        <!-- GOALS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="12" cy="12" r="1"/>
+                <path d="M18 6l3-3"/>
+            </svg>
+
+            Goals
+
+        </a>
+
+
+        <!-- PROGRESS -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 19V5"/>
+                <path d="M4 19h17"/>
+                <path d="M7 15l4-4 3 2 6-7"/>
+            </svg>
+
+            Progress
+
+        </a>
+
+
+        <div class="nav-separator"></div>
+
+
+        <!-- SETUP -->
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-2.6V20a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.6-1H6v-2.6h.2A1.7 1.7 0 0 0 7.8 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.2h2.6V5a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2V14h-.2a1.7 1.7 0 0 0-1.6 1z"/>
+            </svg>
+
+            Setup
+
+        </a>
+
+
+    </div>
 
 </nav>
 
-`;
-
-</script>
 
 </body>
 </html>
